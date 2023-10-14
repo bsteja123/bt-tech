@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Tech Event</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            font-size: 18px; /* Increase the body text size */
+        }
+        #event-details {
+            margin-bottom: 30px;
+        }
+        #video-container {
+            text-align: center;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        #timer {
+            font-size: 24px;
+            color: #00ff00; /* Green font color */
+        }
+        #navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        #navigation button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* Make images smaller */
+            margin-bottom: 10px;
+        }
+        .content-section {
+            display: none;
+        }
+        h2,h3{
+            color: rgb(40, 40, 182);
+            border-style:outset
+        }
+        h1{
+            color: rgb(116, 201, 11);
+            border-spacing: 10px;
+          border-style:double;
+          border-color: azure;
+          outline-style:double;
+          outline-color: beige;
+          border-radius: 5px;
+          border-bottom-width: 10px;
+          border-top-width: 7px;
+          border-left-width: 7px;
+          border-right-width: 7px;
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px; /* Adjust the max-width as needed */
+            height: 450px; /* Adjust the height as needed */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div id="navigation">
+        <button onclick="showContent('home')">Home</button>
+        <button onclick="showContent('aboutProject')">About Project</button>
+        <button onclick="showContent('ourClients')">Our Clients</button>
+        <button>Menu</button>
+    </div>
+
+    <div class="container">
+        <div class="content-section" id="home-section">
+            <h1>Company - Binary Tech</h1>
+            <h2 style="color: blueviolet;">1st Event Presentation on Making Project with AI Concepts</h2>
+            <p>Venue: Zoom Online</p>
+            <p>Date: November 30</p>
+            <p>Time: 6:00 PM - 9:30 PM</p>
+            <p>Zoom Link: <a href="https://valpo-edu.zoom.us/j/88481520761?pwd=MjhPREpxaU5nelArZzhjZ1MxbVF0UT09">Join Zoom Meeting</a></p>
+        </div>
+
+        <div class="content-section" id="aboutProject-section">
+            <h2>Binary tech-unleashing the power of Ai</h2>
+            <h3>project 1</h3>
+            <p>Blog to podcast - sound natural, like 2 people talking Once interview is created in audio - create
+                Import or paste a Blog		Tiktok or shorts - with AI persons
+                Convert blog into an interview dialougue between 2 people (host and interviewee)		Youtube short with AI persons
+                Then have blog read through suno		
+                    Blog to voice but as an interview - bark on github - https://github.com/suno-ai/bark	
+                    Find alternative  equal to suno - Suno currently open source	
+                    Check huggingface text to speech	</p>
+            <h3>project 2</h3>
+            <p>UX Redesign of blogstorm </p>
+            <h3>project 3</h3>
+            <p>Determine how we can use NLP to optimize SEO articles and keywords		
+	Future - NLP - Study SurferSEO and NeuronWriter to understand how NLP (Natural Language Processing) - Python or Google API access		
+	Future - nlp - Under All Blogs tab - Put a Number (which is the medial word count based off of top 10 median words) - then a GREEN check mark if total words matches average number and a red check mark if it fails to meet average/median.	</p>
+            
+        </div>
+
+        <div class="content-section" id="ourClients-section">
+            <h2>Our Clients</h2>
+            <h3>Rob rizk</h3>
+            <img src="https://secure.gravatar.com/avatar/8b7ac216a8a483cd1a651622e5c450a3?s=500&r=g"/>
+            
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://technonguide.com/wp-content/uploads/2020/08/What-is-Artificial-Intelligence.png" alt="AI Image">
+            </div>
+           
+        </div>
+    </div>
+
+    <div class="container" id="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/sY2REp3w9lk" frameborder="0" allowfullscreen></iframe>
+
+    <div class="container">
+        <div id="timer">
+            <p>Time Remaining for the Presentation: <span id="countdown"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            // Hide all content sections
+            var contentSections = document.querySelectorAll('.content-section');
+            contentSections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+
+            // Show the selected content section
+            var selectedContent = document.getElementById(contentId + '-section');
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+        }
+
+        // JavaScript for the timer
+        const eventDate = new Date('November 30, 2023 18:00:00 GMT+0000');
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            const currentTime = new Date();
+            const difference = eventDate - currentTime;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `${days} days, ${hours}:${padZero(minutes)}:${padZero(seconds)}`;
+        }
+
+        function padZero(num) {
+            return num < 10 ? `0${num}` : num;
+        }
+
+        // Initial update
+        updateCountdown();
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
